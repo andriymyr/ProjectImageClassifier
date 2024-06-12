@@ -11,6 +11,8 @@ from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from html_response import response
 from starlette.responses import HTMLResponse
+import webbrowser
+import time
 
 app = FastAPI()
 
@@ -22,8 +24,8 @@ async def index():
     """
     The index function is the root of the API.
     It returns a FileResponse object, which is a file that can be read by any browser.
-    
-    
+
+
     :return: The index
     :doc-author: Trelent
     """
@@ -31,16 +33,36 @@ async def index():
 
 
 @app.post("/run-jupyter/")
-def run_jupyter():
-    """
-    The run_jupyter function starts a Jupyter Notebook server.
-
-    :return: A dictionary with the message key and value
-    :doc-author: Trelent
-    """
+async def run_jupyter(request: Request):
     try:
-        subprocess.Popen(["jupyter", "notebook"])
-        return {"message": "Jupyter Notebook started successfully"}
+        # Отримуємо User-Agent із заголовків запиту
+        user_agent = request.headers.get("user-agent")
+
+        # Визначаємо браузер за User-Agent
+        if "Chrome" in user_agent:
+            browser_name = "chrome"
+        elif "Firefox" in user_agent:
+            browser_name = "firefox"
+        elif "Edg" in user_agent:
+            browser_name = "edge"
+        else:
+            browser_name = "default"
+
+        # Запускаємо Jupyter Notebook на порту 8889
+        subprocess.Popen(["jupyter", "notebook", "--port=8889"])
+
+        # Зачекаємо кілька секунд, щоб сервер запустився і URL став доступним
+        time.sleep(5)
+
+        # Вибираємо браузер і відкриваємо URL
+        if browser_name != "default":
+            browser = webbrowser.get(browser_name)
+        else:
+            browser = webbrowser.get()  # браузер за замовчуванням
+
+        browser.open("/run-jupyter/")
+
+        return {"message": f"Jupyter Notebook started successfully in {browser_name}"}
     except Exception as e:
         return {"error": str(e)}
 
@@ -50,7 +72,7 @@ async def predict_api(file: UploadFile = File(...)):
     """
     The predict_api function is a FastAPI endpoint that accepts an uploaded image file,
         processes it with the predict function, and returns the prediction as a string.
-    
+
     :param file: UploadFile: Pass the uploaded file to the function
     :return: A htmlresponse object with the prediction result
     :doc-author: Trelent

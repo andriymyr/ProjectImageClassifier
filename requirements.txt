@@ -33,4 +33,6 @@ websocket-client
 websockets
 keras
 lfs
+jupyter
+requests
 docker
