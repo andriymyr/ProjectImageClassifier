@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convolutional Neural Network</title>
+    <link rel="stylesheet" href="/static/styles/styles1.css">
+    <style>
+        body {
+            background-color: beige;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            padding-top: 20px;
+            padding-bottom: 30px;
+            min-height: calc(100vh - 100px);
+        }
+        .form-button {
+            padding-top: 50px;
+        }
+        .linkedin-links {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .linkedin-links a {
+            margin-right: 10px;
+            font-family: arial;
+            font-size: 12px;
+        }
+       .button-text-color {
+            padding: 8px 16px;
+            appearance: auto !important;
+            border-radius: 25px;
+            border-width: 1px;
+            cursor: pointer;
+            -webkit-text-fill-color: black;
+            background-color:azure;
+        
+            font-family: Arial, sans-serif; 
+            font-size: 14px; 
+        }
+        .button-text-color:hover{
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            } 
+        .button-text-color-file{
+            position: absolute;
+            width: 128px;
+            height: 37px;
+            opacity: 0;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            }
+        .button-text-color-label{
+            position: relative;
+            display: inline-block;
+            border: 1px solid black;
+            cursor: pointer;
+            background-color:azure;
+            box-sizing: border-box;
+            }
+        .discription{
+                width: 600px;
+    margin: 0 auto 15px auto;
+    font-size: 20px;
+            font-family: Arial, sans-serif; 
+            }
+        .imgs{
+            width: 31vh;
+            z-index: 99;
+            }
+        .imgs-container{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            }
+        .imgs-container-two{
+            right: 0;
+            top: 20px;
+            }
+        .container-list {
+            display: flex;
+            justify-content: center;
+            }
+        .column-list {
+            margin-right: 120px;
+            }
+        h1{
+            margin-top: 60px;
+            font-size: 300%;
+            }
+            .linkedin-links{
+                border-top: 1px solid black;
+                width: 69%;
+            }
+
+            body > div.container > div.linkedin-links > h2{
+                 font-weight: 600;
+                color: black;
+                font-size: 14px;
+                margin-bottom: 4px;
+            }
+
+            .main-link {
+                    padding: 10px;
+    font-size: 18px;
+    margin-left: 30px;
+            }
+            #upload-message{
+                height: 15px;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+       <div class="imgs-container">
+        <img class="imgs"
+            src="/static/styles/cat.jpg"
+            alt="">
+        <img class="imgs"
+            src="/static/styles/airplane.jpg"
+            alt="">
+        <img class="imgs"
+            src="/static/styles/deer.jpg"
+            alt="">
+       </div>
+        <h1>Image   Classification</h1>
+        <form action="/predict/image" enctype="multipart/form-data" method="post" class="form-button">
+            <label for="file" class="button-text-color button-text-color-label main-link">Обрати файл
+                <input class="button-text-color-file" type="file" name="file" id="fileInput">
+            </label>
+            <input class="button-text-color button-text-color-submit main-link" type="submit" value="Класифікувати" id="submitButton">
+        </form>
+        <p id="upload-message" class="message"></p>
+        <div class="discription">Вітаю! Я створений командою "Pythonistas" і вмію розпізнавати картинки за такими класами:
+            <div class="container-list">
+                <div class="column-list">
+                    <ul>
+                        <li>літак</li>
+                        <li>автомобіль</li>
+                        <li>птах</li>
+                        <li>кіт</li>
+                        <li>олень</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul>
+                        <li>пес</li>
+                        <li>жаба</li>
+                        <li>кінь</li>
+                        <li>корабель</li>
+                        <li>вантажівка</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="imgs-container imgs-container-two">
+            <img class="imgs"
+                src="/static/styles/dog.jpg"
+                alt="">
+            <img class="imgs"
+                src="/static/styles/automobile.jpg"
+                alt="">
+            <img class="imgs"
+                src="/static/styles/bird.jpg"
+                alt="">
+        </div>
+        <div>
+            <a class="button-text-color button-text-color-submit" href="https://github.com/Topsya/home-work/blob/main/Data_Science/HomeWork/new_project/opusModel.py">Опис моделі</a>
+            <a class="button-text-color button-text-color-submit"
+                href="https://github.com/Topsya/home-work/blob/main/Data_Science/HomeWork/new_project/new2.ipynb">Навчання, графіки втрат та точності</a>
+            <a class="button-text-color button-text-color-submit"
+                href="https://github.com/Topsya/home-work/blob/main/Data_Science/HomeWork/new_project/testModelResultDotrenuvan.ipynb">Перевірка моделі</a>
+    
+        </div>
+        <div class="linkedin-links">
+            <h2>Команда розробників</h2>
+            <a href="https://www.linkedin.com/in/rishniakvaleriy/">Валерій Рішняк</a>
+            <a href="https://www.linkedin.com/in/viktoriia-p-152100211/">Viktoriia Piatkovska</a>
+            <a href="https://www.linkedin.com/me?trk=p_mwlite_feed_updates-secondary_nav">Антон Мещеряков</a>
+            <a href="https://www.linkedin.com/in/shevchenko-sergiy/">Сергій Шевченко</a>
+            <a href="https://www.linkedin.com/in/denys-malychok-243520292/">Денис Маличок</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('input[type="file"]').addEventListener('change', function (event) {
+            const input = event.target;
+            const file = input.files[0];
+            const allowedExtensions = /(\.jpg|\.jpeg)$/i;
+            const uploadMessage = document.getElementById('upload-message');
+            const submitButton = document.getElementById('submitButton');
+
+            if (!allowedExtensions.exec(file.name)) {
+                uploadMessage.innerText = "Неправильне розширення файлу";
+                uploadMessage.classList.add('error');
+                uploadMessage.classList.remove('success');
+                submitButton.disabled = true;
+            } else {
+                uploadMessage.innerText = `Файл "${file.name}" успішно завантажений`;
+                uploadMessage.classList.add('success');
+                uploadMessage.classList.remove('error');
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
