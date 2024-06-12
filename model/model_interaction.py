@@ -24,12 +24,26 @@ class_names = [
 
 
 def load_model():
+    """
+    The load_model function loads the model from a filepath.
+    
+    :return: A trained model
+    :doc-author: Trelent
+    """
     model = keras.models.load_model(filepath)
 
     return model
 
 
 def predict(image: Image.Image):
+    """
+    The predict function takes an image as input and returns a string
+        describing the object in the image.
+
+    :param image: Image.Image: Pass the image to the function
+    :return: A string with the class name
+    :doc-author: Trelent
+    """
     global model
     if model is None:
         try:
@@ -47,6 +61,13 @@ def predict(image: Image.Image):
 
 
 def read_imagefile(file) -> Image.Image:
+    """
+    The read_imagefile function takes a file object and returns an Image.Image object.
+
+    :param file: Read the image file
+    :return: An image object
+    :doc-author: Trelent
+    """
     image = Image.open(BytesIO(file))
 
     return image

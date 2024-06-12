@@ -1,4 +1,14 @@
 def response(filename, prediction):
+    """
+    The response function takes the filename and prediction as arguments,
+        and returns an HTML string that displays the image with its predicted label.
+
+
+    :param filename: Get the name of the file that was uploaded
+    :param prediction: Pass the prediction to the response function
+    :return: A string of html code that is displayed in the browser
+    :doc-author: Trelent
+    """
     html = f"""
         <html>
 
@@ -42,5 +52,5 @@ def response(filename, prediction):
 
         </html>
         """
-    
+
     return html
