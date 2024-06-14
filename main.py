@@ -33,19 +33,49 @@ async def index():
 
 
 @app.post("/run-jupyter/")
-async def run_jupyter():
+async def run_jupyter(request: Request):
     try:
+        # Отримуємо User-Agent із заголовків запиту
+        #user_agent = request.headers.get("user-agent")
+
+        # Визначаємо браузер за User-Agent
+        #if "Chrome" in user_agent:
+        #    browser_name = "chrome"
+        #elif "Firefox" in user_agent:
+        #    browser_name = "firefox"
+        #elif "Edg" in user_agent:
+        #    browser_name = "edge"
+        #else:
+        #    browser_name = "default"
+        
+        #webbrowser.open("http://localhost:8080")
+
+        # Вибираємо браузер і відкриваємо URL
+        #if browser_name != "default":
+        #    browser = webbrowser.get(browser_name)
+        #else:
+        #    browser = webbrowser.get()  # браузер за замовчуванням
+
+        #webbrowser.open("http://localhost:8080")
+
+        #time.sleep(5)
+
         # Запускаємо Jupyter Notebook на порту 8889
-        subprocess.Popen(["jupyter", "notebook", "--port=8889"])
+        subprocess.Popen(["jupyter", "notebook", "--no-browser", "--port=8889"])
+        #subprocess.Popen(["jupyter", "notebook", "--port=8889"])
 
         # Зачекаємо кілька секунд, щоб сервер запустився і URL став доступним
         time.sleep(5)
 
         # Відкриваємо URL у браузері за замовчуванням
-        #webbrowser.open("http://localhost:8889")
+        #webbrowser.open("http://localhost:8080")
+        
+        
+        webbrowser.open("http://localhost:8889")
 
-        #return {"message": "Jupyter Notebook started successfully"}
-        return FileResponse("static/index.html")
+        return {"message": "Jupyter Notebook started successfully"}
+
+        #return FileResponse("static/index.html")
     except Exception as e:
         return {"error": str(e)}
 
@@ -135,4 +165,4 @@ async def predict_api(file: UploadFile = File(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8002, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
