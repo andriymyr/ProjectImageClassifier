@@ -4,17 +4,17 @@ os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 
 import subprocess
 import traceback
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException, Request
 from model.model_interaction import predict, read_imagefile
 import uvicorn
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from html_response import response
-from starlette.responses import HTMLResponse
+#from starlette.responses import HTMLResponse
 import webbrowser
 import time
 
-app = FastAPI()
+app = FastAPI() 
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -33,36 +33,19 @@ async def index():
 
 
 @app.post("/run-jupyter/")
-async def run_jupyter(request: Request):
+async def run_jupyter():
     try:
-        # Отримуємо User-Agent із заголовків запиту
-        user_agent = request.headers.get("user-agent")
-
-        # Визначаємо браузер за User-Agent
-        if "Chrome" in user_agent:
-            browser_name = "chrome"
-        elif "Firefox" in user_agent:
-            browser_name = "firefox"
-        elif "Edg" in user_agent:
-            browser_name = "edge"
-        else:
-            browser_name = "default"
-
         # Запускаємо Jupyter Notebook на порту 8889
         subprocess.Popen(["jupyter", "notebook", "--port=8889"])
 
         # Зачекаємо кілька секунд, щоб сервер запустився і URL став доступним
         time.sleep(5)
 
-        # Вибираємо браузер і відкриваємо URL
-        if browser_name != "default":
-            browser = webbrowser.get(browser_name)
-        else:
-            browser = webbrowser.get()  # браузер за замовчуванням
+        # Відкриваємо URL у браузері за замовчуванням
+        #webbrowser.open("http://localhost:8889")
 
-        browser.open("/run-jupyter/")
-
-        return {"message": f"Jupyter Notebook started successfully in {browser_name}"}
+        #return {"message": "Jupyter Notebook started successfully"}
+        return FileResponse("static/index.html")
     except Exception as e:
         return {"error": str(e)}
 
@@ -152,4 +135,4 @@ async def predict_api(file: UploadFile = File(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8002, reload=True)
