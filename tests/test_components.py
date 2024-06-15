@@ -19,9 +19,6 @@ def file():
     The record work makes a record protest that can be utilized to test the show.
         The work returns a record question with an picture of measure 100x100 and color ruddy.
 
-
-    :return: A file-like object
-    :doc-author: Trelent
     """
     file_data = BytesIO()
     image = Image.new("RGB", size=(100, 100), color=(255, 0, 0))
