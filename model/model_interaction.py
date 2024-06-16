@@ -7,7 +7,10 @@ from PIL import Image
 
 model = None
 
-filepath = "model/models/vgg16_basesd_model_2_VGG16.hdf5"
+# filepath = "model/models/vgg16_basesd_model_2_VGG16.hdf5"
+# filepath = "model/models/vgg16_base_sd_model_2_donovchanya_VGG_150624.h5"
+filepath = "model/models/basesd_model_CNN.hdf5"
+
 
 class_names = [
     "Літак",
@@ -26,7 +29,7 @@ class_names = [
 def load_model():
     """
     The load_model function loads the model from a filepath.
-    
+
     :return: A trained model
     :doc-author: Trelent
     """
