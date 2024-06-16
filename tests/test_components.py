@@ -16,12 +16,9 @@ sys.path.append(os.getcwd())
 @pytest.fixture()
 def file():
     """
-    The file function creates a file object that can be used to test the model.
-        The function returns a file object with an image of size 100x100 and color red.
+    The record work makes a record protest that can be utilized to test the show.
+        The work returns a record question with an picture of measure 100x100 and color ruddy.
 
-
-    :return: A file-like object
-    :doc-author: Trelent
     """
     file_data = BytesIO()
     image = Image.new("RGB", size=(100, 100), color=(255, 0, 0))
@@ -33,11 +30,9 @@ def file():
 
 def test_load_model():
     """
-    The test_load_model function tests the load_model function in model/model_interaction.py
-        The test checks that the result of calling load_model is an instance of Model, which is a class defined in model/Model.py
+    The test_load_model work tests the load_model work in model/model_interaction.py
+        The test checks that the result of calling load_model is an occurrence of demonstrate, which may be a lesson characterized in model/Model.py 
 
-    :return: A model object
-    :doc-author: Trelent
     """
     result = model_components.load_model()
     assert isinstance(result, Model)
@@ -45,13 +40,9 @@ def test_load_model():
 
 def test_read_imagefile(file):
     """
-    The test_read_imagefile function tests the read_imagefile function in model_interaction.py
-        The test checks that the result of calling read_imagefile is an instance of JpegImagePlugin.JpegImageFile
+    The test_read_imagefile work tests the read_imagefile work in model_interaction.py
+        The test checks that the result of calling read_imagefile is an occurrence of JpegImagePlugin.JpegImageFile 
 
-
-    :param file: Read the image file
-    :return: The image file
-    :doc-author: Trelent
     """
     result = model_components.read_imagefile(file.read())
     assert isinstance(result, JpegImagePlugin.JpegImageFile)
@@ -59,15 +50,11 @@ def test_read_imagefile(file):
 
 def test_predict(file):
     """
-    The test_predict function tests the predict function in model_interaction.py
-        The test_predict function takes a file as an argument and reads it into memory.
-        It then passes that image to the predict function, which returns a string of 
-        predicted labels for that image. The test asserts that this returned value is 
-        indeed a string.
+    The test_predict work tests the foresee work in model_interaction.py
+        The test_predict work takes a record as an contention and peruses it into memory.
+            It at that point passes that picture to the foresee work, which returns a string of
+            anticipated names for that image. The test attests that this returned esteem isundoubtedly a string. 
     
-    :param file: Read the image file
-    :return: A string
-    :doc-author: Trelent
     """
     image = model_components.read_imagefile(file.read())
     result = model_components.predict(image)
