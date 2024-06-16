@@ -52,7 +52,7 @@ async def run_jupyter(request: Request):
         # Зачекаємо кілька секунд, щоб сервер запустився і URL став доступним
         time.sleep(5)
 
-        webbrowser.open("http://localhost:8889/tree")
+        webbrowser.open("http://localhost:8889/tree/model")
 
         return {"message": "Jupyter Notebook started successfully"}
     except Exception as e:
