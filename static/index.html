@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/styles/styles1.css">
     <style>
         body {
-            background-color: beige;
+            background-color: #99836d;
         }
         .container {
             text-align: center;
@@ -38,7 +38,7 @@
             border-width: 1px;
             cursor: pointer;
             -webkit-text-fill-color: black;
-            background-color:azure;
+            background-color: #98826b;
         
             font-family: Arial, sans-serif; 
             font-size: 14px; 
@@ -62,7 +62,7 @@
             display: inline-block;
             border: 1px solid black;
             cursor: pointer;
-            background-color:azure;
+            background-color: #99836d;
             box-sizing: border-box;
             }
         .discription{
@@ -124,14 +124,8 @@
         <img class="imgs"
             src="/static/styles/cat.jpg"
             alt="">
-        <img class="imgs"
-            src="/static/styles/airplane.jpg"
-            alt="">
-        <img class="imgs"
-            src="/static/styles/deer.jpg"
-            alt="">
        </div>
-        <h1>Image   Classification</h1>
+        <h1>recognizer </h1>
         <form action="/predict/image" enctype="multipart/form-data" method="post" class="form-button">
             <label for="file" class="button-text-color button-text-color-label main-link">Обрати файл
                 <input class="button-text-color-file" type="file" name="file" id="fileInput">
@@ -139,7 +133,7 @@
             <input class="button-text-color button-text-color-submit main-link" type="submit" value="Класифікувати" id="submitButton">
         </form>
         <p id="upload-message" class="message"></p>
-        <div class="discription">Вітаю!  Розпізнавання зображень за такими класами:                     Створено командою "Python"
+        <div class="discription">Дана система може розпізнавати зображення:
             <div class="container-list">
                 <div class="column-list">
                     <ul>
@@ -163,19 +157,12 @@
         </div>
         <div class="imgs-container imgs-container-two">
             <img class="imgs"
-                src="/static/styles/dog.jpg"
+                src="/static/styles/0.jpg"
                 alt="">
-            <img class="imgs"
-                src="/static/styles/automobile.jpg"
-                alt="">
-            <img class="imgs"
-                src="/static/styles/bird.jpg"
-                alt="">
+
         </div>
         <div>
-            <form action="/run-jupyter/" method="post" style="display: inline;">
-                <button class="button-text-color button-text-color-submit main-link" type="submit">Jupyter Notebook для визначення моделі</button>
-            </form>
+            <a class="button-text-color button-text-color-submit" href="http:localhost/run-jupyter/">Опис моделі</a>
             <a class="button-text-color button-text-color-submit"
                 href="https://github.com/Topsya/home-work/blob/main/Data_Science/HomeWork/new_project/new2.ipynb">Навчання, графіки втрат та точності</a>
             <a class="button-text-color button-text-color-submit"
@@ -183,8 +170,12 @@
     
         </div>
         <div class="linkedin-links">
-            <h2>Команда розробників</h2>
-            <a href="https://www./">1</a>
+            <h2>Команда</h2>
+            <a >Андрій </a>
+            <a >Андрій </a>
+            <a >Віктор </a>
+            <a >Богдан</a>
+            <a >Анатолій</a>
         </div>
     </div>
 
@@ -202,7 +193,7 @@
                 uploadMessage.classList.remove('success');
                 submitButton.disabled = true;
             } else {
-                uploadMessage.innerText = `Файл "${file.name}" завантажено`;
+                uploadMessage.innerText = `Файл "${file.name}" успішно завантажений`;
                 uploadMessage.classList.add('success');
                 uploadMessage.classList.remove('error');
                 submitButton.disabled = false;

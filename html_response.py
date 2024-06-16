@@ -26,12 +26,6 @@ def response(filename, prediction):
                     <img class="imgs"
                         src="/static/styles/cat.jpg"
                         alt="">
-                    <img class="imgs"
-                        src="/static/styles/airplane.jpg"
-                        alt="">
-                    <img class="imgs"
-                        src="/static/styles/deer.jpg"
-                        alt="">
                 </div>
                 <h1>Image   Classification</h1>
                         
@@ -41,12 +35,6 @@ def response(filename, prediction):
                 <div class="imgs-container imgs-container-two">
                     <img class="imgs"
                         src="/static/styles/dog.jpg"
-                        alt="">
-                    <img class="imgs"
-                        src="/static/styles/automobile.jpg"
-                        alt="">
-                    <img class="imgs"
-                        src="/static/styles/bird.jpg"
                         alt="">
         </body>
 

@@ -20,14 +20,14 @@ img {
 h1 {
     font-family: "League Gothic";
     font-size: 300%;
-    color: #460273;
+    color: #412a17;
     text-align: center;
     font-style: italic;
     text-transform: uppercase;
     white-space: nowrap;
     line-height: 1%;
     /* Параметри тіні */
-    text-shadow: 10px 10px 20px black, 0 0 1em #000066;
+    text-shadow: 10px 10px 20px black, 0 0 1em #f5f0dc;
 }
 
 h2 {

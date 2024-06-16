@@ -1,6 +1,9 @@
+
+
 body {
-    background-color: beige;
+    background-color: #99836d;
 }
+@media only screen and (min-width: 1024px) {
 
 p {
     padding-top: 50px;
@@ -37,7 +40,7 @@ p {
     border-width: 1px;
     cursor: pointer;
     -webkit-text-fill-color: black;
-    background-color: azure;
+    background-color: #412a17;
 
     font-family: Arial, sans-serif;
     font-size: 14px;
@@ -62,9 +65,9 @@ p {
 .button-text-color-label {
     position: relative;
     display: inline-block;
-    border: 1px solid black;
+    border: 1px solid #412a17;
     cursor: pointer;
-    background-color: azure;
+    background-color: #99836d;
     box-sizing: border-box;
 }
 
@@ -132,4 +135,5 @@ body>div.container>input[type=button]:hover{
 .imgs-container-two {
     right: 0;
     top: 20px;
+}
 }
