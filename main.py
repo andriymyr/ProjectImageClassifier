@@ -54,7 +54,12 @@ async def run_jupyter(request: Request):
 
         webbrowser.open("http://localhost:8889/tree/model")
 
-        return {"message": "Jupyter Notebook started successfully"}
+        # return {"message": "Jupyter Notebook started successfully"}
+        return HTMLResponse(
+            content="<p id='upload-message' class='error'>Jupyter Notebook started successfully</p>",
+            status_code=220,
+        )
+
     except Exception as e:
         return {"error": str(e)}
 

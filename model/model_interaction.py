@@ -1,13 +1,15 @@
 import keras
 import numpy as np
 
+# from tensorflow.keras.models import load_model
+
 from io import BytesIO
 from PIL import Image
 
 
 model = None
 
-filepath = "model/models/vgg16_basesd_model_2_VGG16.hdf5"
+filepath = "model/models/_basesd_model.hdf5"
 
 class_names = [
     "Літак",
@@ -26,11 +28,12 @@ class_names = [
 def load_model():
     """
     The load_model function loads the model from a filepath.
-    
+
     :return: A trained model
     :doc-author: Trelent
     """
     model = keras.models.load_model(filepath)
+    # model = load_model(filepath)
 
     return model
 
