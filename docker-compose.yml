@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  app:
+    image: andmyr/project_image_classifier:tagname
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "8889:8889"

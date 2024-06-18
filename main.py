@@ -52,13 +52,29 @@ async def run_jupyter(request: Request):
         # Зачекаємо кілька секунд, щоб сервер запустився і URL став доступним
         time.sleep(5)
 
-        webbrowser.open("http://localhost:8889/tree/model")
+        html_content = """
+        <html>
+        <head>
+            <script type="text/javascript">
+                window.onload = function() {
+                    window.location.href = "http://localhost:8889/tree/model";
+                }
+            </script>
+        </head>
+        <body>
+            <p id='upload-message' class='error'>Jupyter Notebook started successfully</p>
+        </body>
+        </html>
+        """
+        return HTMLResponse(content=html_content, status_code=200)
+
+        # webbrowser.open("http://localhost:8889/tree/model")
 
         # return {"message": "Jupyter Notebook started successfully"}
-        return HTMLResponse(
-            content="<p id='upload-message' class='error'>Jupyter Notebook started successfully</p>",
-            status_code=220,
-        )
+        # return HTMLResponse(
+        #    content="<p id='upload-message' class='error'>Jupyter Notebook started successfully</p>",
+        #    status_code=220,
+        # )
 
     except Exception as e:
         return {"error": str(e)}
